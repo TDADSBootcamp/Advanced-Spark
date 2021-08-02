@@ -30,6 +30,11 @@
   LIMIT 10;
   '''
   ```
+- time the query
+  ```python
+  >>> import time
+  >>> start=time.time(); spark.sql(top_10_clients_by_bytes_template.format('access_log')).show(); print(f'csv-backed took {time.time()-start:.2f}s')
+  ```
 
 - save the data out in an optimised, columnar format
   ```python
@@ -40,11 +45,6 @@
   ```python
   >>> access_log_parquet = spark.read.load('/data/uncommitted/access_log.parquet')
   >>> access_log_parquet.createOrReplaceTempView('access_log_parquet')
-  >>> start=time.time(); spark.sql(top_10_clients_by_bytes_template.format('access_log_parquet')).show(); time.time()-start
+  >>> start=time.time(); spark.sql(top_10_clients_by_bytes_template.format('access_log_parquet')).show(); print(f'parquet-backed took {time.time()-start:.2f}s')
 
 - how much faster is the parquet-backed query? Why?
-  ```python
-  >>> import time
-  >>> start=time.time(); spark.sql(top_10_clients_by_bytes_template.format('access_log')).show(); print(f'csv-backed took {time.time()-start:.2f}s')
-  >>> start=time.time(); spark.sql(top_10_clients_by_bytes_template.format('access_log_parquet')).show(); print(f'parquet-backed took {time.time()-start:.2f}s')
-  ```
