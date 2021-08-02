@@ -71,7 +71,7 @@ Note - `map`, `filter` and `reduce` are ideas from "functional programming" - a 
 
 - Can you calculate the number of lines of each length in the file?
 
-- Write results
+- Write results (you'll need to allow write access to all in `uncommitted` for this to work: `chmod 777 uncommitted` in the root of the project)
   ```python
   >>> import time
   >>> text = sc.textFile('README.md').filter(lambda line: 'Spark' in line).saveAsTextFile(f'/data/uncommitted/spark_lines_{time.time()}')
