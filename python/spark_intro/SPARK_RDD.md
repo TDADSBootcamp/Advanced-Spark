@@ -65,7 +65,7 @@ Note - `map`, `filter` and `reduce` are ideas from "functional programming" - a 
   ...
   ```
   - where is the `README.md` file we are reading?
-  - how would we read the `.pylintrc` file in the root of this repo?
+  - how would we read the `Dockerfile` file in the root of this repo?
   - how many lines mention './bin'?
   - what is the mean line length?
 
